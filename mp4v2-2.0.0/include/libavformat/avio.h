@@ -83,17 +83,18 @@ typedef struct AVIOContext {
     //const AVClass *av_class;//cwm
     unsigned char *buffer;  /**< Start of the buffer. */
     int buffer_size;        /**< Maximum buffer size */
-    unsigned char *buf_ptr; /**< Current position in the buffer *///cwm 对于写文件来说是write_index，对于读文件来说是read_index
+    unsigned char *buf_ptr; /**< Current position in the buffer *///cwm 瀵逛簬鍐欐枃浠舵潵璇存槸write_index锛屽浜庤鏂囦欢鏉ヨ鏄痳ead_index
     unsigned char *buf_end; /**< End of the data, may be less than
                                  buffer+buffer_size if the read function returned
                                  less data than requested, e.g. for streams where
-                                 no more data has been received yet. *///cwm 对于写文件来说是read_index，对于读文件来说是write_index
+                                 no more data has been received yet. *///cwm 瀵逛簬鍐欐枃浠舵潵璇存槸read_index锛屽浜庤鏂囦欢鏉ヨ鏄痺rite_index
 
 	avio_buffer *pAvioBuf;
 } AVIOContext;
 
 
-
+#ifndef _GCC_WRAP_STDINT_H
+	
 typedef unsigned char 		uint8_t;
 typedef unsigned short 		uint16_t;
 typedef unsigned int 		uint32_t;
@@ -103,7 +104,8 @@ typedef signed char 		int8_t;
 typedef signed short 		int16_t;
 typedef signed int 			int32_t;
 typedef signed long long 	int64_t;
-
+	
+#endif
 
 #define AVERROR_INVALIDDATA		(-1)
 #define FF_MEMORY_POISON 		0x2a
